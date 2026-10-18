@@ -1,0 +1,46 @@
+{
+  "group": "Group 13",
+  "course": "MSBA 610 Advanced Text Analytics",
+  "created": "2026-10-12 09:27",
+  "model_requested": "meta-llama/Llama-3.2-3B-Instruct",
+  "model_used": "meta-llama/Llama-3.2-3B-Instruct",
+  "gpu": "Tesla T4",
+  "n_train": 2000,
+  "n_val": 200,
+  "n_test": 162,
+  "max_len": 512,
+  "max_new_tokens": 300,
+  "lora": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05
+  },
+  "lr": 0.0002,
+  "epochs": 1,
+  "effective_batch": 16,
+  "use_intent_hint": true,
+  "system_prompt": "You are a helpful, concise customer-service assistant for an e-commerce company. Answer only using information the customer provides in their message. Never invent order numbers, dates, prices, phone numbers, links or account details; if a specific detail is needed, refer to it with a placeholder such as {{Order Number}}.",
+  "best_router": "svm",
+  "router_labels": {
+    "nb": "Model 1 - Multinomial Naive Bayes",
+    "svm": "Model 2 - Linear SVM"
+  },
+  "train_info": {
+    "train_minutes": 21.9,
+    "optimizer_steps": 125,
+    "trainable_params": 24313856,
+    "total_params": 1827777536
+  },
+  "timing_seconds": {
+    "base_generation_s": 114.5219349861145,
+    "finetuned_generation_s": 287.5489590167999
+  },
+  "versions": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "transformers": "5.18.0",
+    "peft": "0.21.1",
+    "scikit-learn": "1.6.1",
+    "numpy": "2.1.3"
+  }
+}

@@ -1,0 +1,696 @@
+{
+  "category_counts": {
+    "ACCOUNT": 5358,
+    "ORDER": 3067,
+    "REFUND": 2577,
+    "FEEDBACK": 1990,
+    "PAYMENT": 1986,
+    "CONTACT": 1966,
+    "SHIPPING": 1951,
+    "INVOICE": 1801,
+    "DELIVERY": 1645,
+    "SUBSCRIPTION": 992,
+    "CANCEL": 941
+  },
+  "intent_counts": [
+    {
+      "intent": "complaint",
+      "category": "FEEDBACK",
+      "count": 997
+    },
+    {
+      "intent": "check_payment_methods",
+      "category": "PAYMENT",
+      "count": 993
+    },
+    {
+      "intent": "payment_issue",
+      "category": "PAYMENT",
+      "count": 993
+    },
+    {
+      "intent": "review",
+      "category": "FEEDBACK",
+      "count": 993
+    },
+    {
+      "intent": "place_order",
+      "category": "ORDER",
+      "count": 992
+    },
+    {
+      "intent": "newsletter_subscription",
+      "category": "SUBSCRIPTION",
+      "count": 992
+    },
+    {
+      "intent": "registration_problems",
+      "category": "ACCOUNT",
+      "count": 992
+    },
+    {
+      "intent": "set_up_shipping_address",
+      "category": "SHIPPING",
+      "count": 990
+    },
+    {
+      "intent": "delivery_period",
+      "category": "DELIVERY",
+      "count": 990
+    },
+    {
+      "intent": "recover_password",
+      "category": "ACCOUNT",
+      "count": 988
+    },
+    {
+      "intent": "contact_customer_service",
+      "category": "CONTACT",
+      "count": 987
+    },
+    {
+      "intent": "contact_human_agent",
+      "category": "CONTACT",
+      "count": 979
+    },
+    {
+      "intent": "check_refund_policy",
+      "category": "REFUND",
+      "count": 974
+    },
+    {
+      "intent": "change_shipping_address",
+      "category": "SHIPPING",
+      "count": 961
+    },
+    {
+      "intent": "check_cancellation_fee",
+      "category": "CANCEL",
+      "count": 941
+    },
+    {
+      "intent": "check_invoice",
+      "category": "INVOICE",
+      "count": 913
+    },
+    {
+      "intent": "get_refund",
+      "category": "REFUND",
+      "count": 911
+    },
+    {
+      "intent": "delete_account",
+      "category": "ACCOUNT",
+      "count": 901
+    },
+    {
+      "intent": "get_invoice",
+      "category": "INVOICE",
+      "count": 888
+    },
+    {
+      "intent": "create_account",
+      "category": "ACCOUNT",
+      "count": 875
+    },
+    {
+      "intent": "change_order",
+      "category": "ORDER",
+      "count": 856
+    },
+    {
+      "intent": "switch_account",
+      "category": "ACCOUNT",
+      "count": 836
+    },
+    {
+      "intent": "track_order",
+      "category": "ORDER",
+      "count": 783
+    },
+    {
+      "intent": "edit_account",
+      "category": "ACCOUNT",
+      "count": 766
+    },
+    {
+      "intent": "track_refund",
+      "category": "REFUND",
+      "count": 692
+    },
+    {
+      "intent": "delivery_options",
+      "category": "DELIVERY",
+      "count": 655
+    },
+    {
+      "intent": "cancel_order",
+      "category": "ORDER",
+      "count": 436
+    }
+  ],
+  "flag_counts": [
+    {
+      "flag": "B",
+      "meaning": "Basic syntax",
+      "count": 24274
+    },
+    {
+      "flag": "L",
+      "meaning": "Lexical variation",
+      "count": 22236
+    },
+    {
+      "flag": "Q",
+      "meaning": "Colloquial",
+      "count": 8293
+    },
+    {
+      "flag": "I",
+      "meaning": "Interrogative",
+      "count": 7362
+    },
+    {
+      "flag": "Z",
+      "meaning": "Errors and typos",
+      "count": 4726
+    },
+    {
+      "flag": "M",
+      "meaning": "Morphological variation",
+      "count": 4619
+    },
+    {
+      "flag": "C",
+      "meaning": "Coordinated / complex",
+      "count": 2622
+    },
+    {
+      "flag": "E",
+      "meaning": "Abbreviations",
+      "count": 1779
+    },
+    {
+      "flag": "K",
+      "meaning": "Keyword mode",
+      "count": 1471
+    },
+    {
+      "flag": "P",
+      "meaning": "Politeness",
+      "count": 1301
+    },
+    {
+      "flag": "W",
+      "meaning": "Offensive language",
+      "count": 1280
+    },
+    {
+      "flag": "N",
+      "meaning": "Negation",
+      "count": 394
+    },
+    {
+      "flag": "S",
+      "meaning": "Syntactic variation",
+      "count": 80
+    },
+    {
+      "flag": "V",
+      "meaning": "V",
+      "count": 77
+    }
+  ],
+  "instruction_words": {
+    "mean": 8.9,
+    "median": 9.0,
+    "p95": 13.0,
+    "max": 16
+  },
+  "response_words": {
+    "mean": 104.0,
+    "median": 90.0,
+    "p95": 207.0,
+    "max": 402
+  },
+  "pct_responses_with_slots": 43.4,
+  "pct_instructions_with_slots": 17.5,
+  "top_response_slots": [
+    {
+      "slot": "Order Number",
+      "count": 3673
+    },
+    {
+      "slot": "Account Type",
+      "count": 3557
+    },
+    {
+      "slot": "Account Category",
+      "count": 2469
+    },
+    {
+      "slot": "Customer Support Phone Number",
+      "count": 2038
+    },
+    {
+      "slot": "Website URL",
+      "count": 1943
+    },
+    {
+      "slot": "Customer Support Hours",
+      "count": 1764
+    },
+    {
+      "slot": "Invoice Number",
+      "count": 1486
+    },
+    {
+      "slot": "Online Order Interaction",
+      "count": 1255
+    },
+    {
+      "slot": "Tracking Number",
+      "count": 887
+    },
+    {
+      "slot": "Date Range",
+      "count": 780
+    },
+    {
+      "slot": "Client Last Name",
+      "count": 560
+    },
+    {
+      "slot": "Salutation",
+      "count": 552
+    },
+    {
+      "slot": "Online Company Portal Info",
+      "count": 535
+    },
+    {
+      "slot": "Settings",
+      "count": 529
+    },
+    {
+      "slot": "Profile",
+      "count": 406
+    },
+    {
+      "slot": "Login Page URL",
+      "count": 396
+    },
+    {
+      "slot": "Account Change",
+      "count": 383
+    },
+    {
+      "slot": "Upgrade Account",
+      "count": 368
+    },
+    {
+      "slot": "Person Name",
+      "count": 314
+    },
+    {
+      "slot": "Store Location",
+      "count": 313
+    }
+  ],
+  "top_instruction_slots": [
+    {
+      "slot": "Order Number",
+      "count": 1992
+    },
+    {
+      "slot": "Person Name",
+      "count": 705
+    },
+    {
+      "slot": "Account Type",
+      "count": 687
+    },
+    {
+      "slot": "Account Category",
+      "count": 557
+    },
+    {
+      "slot": "Refund Amount",
+      "count": 235
+    },
+    {
+      "slot": "Currency Symbol",
+      "count": 169
+    },
+    {
+      "slot": "Delivery Country",
+      "count": 37
+    },
+    {
+      "slot": "Delivery City",
+      "count": 37
+    },
+    {
+      "slot": "Invoice Number",
+      "count": 6
+    }
+  ],
+  "top_unigrams": [
+    {
+      "term": "help",
+      "count": 6058
+    },
+    {
+      "term": "can",
+      "count": 5225
+    },
+    {
+      "term": "slottoken",
+      "count": 4425
+    },
+    {
+      "term": "need",
+      "count": 3860
+    },
+    {
+      "term": "account",
+      "count": 3074
+    },
+    {
+      "term": "see",
+      "count": 3004
+    },
+    {
+      "term": "want",
+      "count": 2943
+    },
+    {
+      "term": "assist",
+      "count": 2927
+    },
+    {
+      "term": "know",
+      "count": 2567
+    },
+    {
+      "term": "check",
+      "count": 2450
+    },
+    {
+      "term": "not",
+      "count": 2368
+    },
+    {
+      "term": "payment",
+      "count": 1947
+    },
+    {
+      "term": "address",
+      "count": 1931
+    },
+    {
+      "term": "order",
+      "count": 1408
+    },
+    {
+      "term": "custom",
+      "count": 1219
+    },
+    {
+      "term": "purchas",
+      "count": 1155
+    },
+    {
+      "term": "inform",
+      "count": 1150
+    },
+    {
+      "term": "deliveri",
+      "count": 1065
+    },
+    {
+      "term": "ship",
+      "count": 1021
+    },
+    {
+      "term": "cancel",
+      "count": 1010
+    },
+    {
+      "term": "tri",
+      "count": 982
+    },
+    {
+      "term": "product",
+      "count": 949
+    },
+    {
+      "term": "ur",
+      "count": 945
+    },
+    {
+      "term": "newslett",
+      "count": 935
+    },
+    {
+      "term": "problem",
+      "count": 888
+    }
+  ],
+  "top_bigrams": [
+    {
+      "term": "not know",
+      "count": 1914
+    },
+    {
+      "term": "need help",
+      "count": 1269
+    },
+    {
+      "term": "want help",
+      "count": 1131
+    },
+    {
+      "term": "order slottoken",
+      "count": 1084
+    },
+    {
+      "term": "slottoken account",
+      "count": 1073
+    },
+    {
+      "term": "need assist",
+      "count": 1013
+    },
+    {
+      "term": "want assist",
+      "count": 928
+    },
+    {
+      "term": "purchas slottoken",
+      "count": 864
+    },
+    {
+      "term": "help see",
+      "count": 824
+    },
+    {
+      "term": "can help",
+      "count": 772
+    },
+    {
+      "term": "ship address",
+      "count": 754
+    },
+    {
+      "term": "deliveri address",
+      "count": 716
+    },
+    {
+      "term": "help check",
+      "count": 620
+    },
+    {
+      "term": "know can",
+      "count": 558
+    },
+    {
+      "term": "dont know",
+      "count": 501
+    },
+    {
+      "term": "case can",
+      "count": 389
+    },
+    {
+      "term": "standard account",
+      "count": 378
+    },
+    {
+      "term": "bill slottoken",
+      "count": 372
+    },
+    {
+      "term": "custom support",
+      "count": 361
+    },
+    {
+      "term": "soon can",
+      "count": 353
+    },
+    {
+      "term": "can expect",
+      "count": 351
+    },
+    {
+      "term": "can ask",
+      "count": 344
+    },
+    {
+      "term": "onlin payment",
+      "count": 331
+    },
+    {
+      "term": "payment option",
+      "count": 328
+    },
+    {
+      "term": "assist see",
+      "count": 322
+    }
+  ],
+  "top_tokens_per_category": {
+    "ACCOUNT": [
+      "account",
+      "slottoken",
+      "help",
+      "need",
+      "can",
+      "inform",
+      "not",
+      "know",
+      "user",
+      "want"
+    ],
+    "CANCEL": [
+      "see",
+      "check",
+      "earli",
+      "termin",
+      "fee",
+      "penalti",
+      "charg",
+      "help",
+      "can",
+      "exit"
+    ],
+    "CONTACT": [
+      "custom",
+      "can",
+      "help",
+      "assist",
+      "speak",
+      "talk",
+      "support",
+      "agent",
+      "servic",
+      "need"
+    ],
+    "DELIVERY": [
+      "see",
+      "can",
+      "check",
+      "help",
+      "arriv",
+      "soon",
+      "expect",
+      "deliveri",
+      "method",
+      "shipment"
+    ],
+    "FEEDBACK": [
+      "help",
+      "feedback",
+      "ur",
+      "claim",
+      "compani",
+      "leav",
+      "product",
+      "servic",
+      "file",
+      "make"
+    ],
+    "INVOICE": [
+      "bill",
+      "invoic",
+      "slottoken",
+      "get",
+      "know",
+      "download",
+      "need",
+      "help",
+      "look",
+      "not"
+    ],
+    "ORDER": [
+      "slottoken",
+      "order",
+      "purchas",
+      "help",
+      "need",
+      "can",
+      "item",
+      "articl",
+      "product",
+      "sever"
+    ],
+    "PAYMENT": [
+      "payment",
+      "help",
+      "see",
+      "can",
+      "onlin",
+      "option",
+      "need",
+      "method",
+      "want",
+      "assist"
+    ],
+    "REFUND": [
+      "can",
+      "refund",
+      "help",
+      "see",
+      "money",
+      "reimburs",
+      "check",
+      "ask",
+      "request",
+      "slottoken"
+    ],
+    "SHIPPING": [
+      "address",
+      "ship",
+      "deliveri",
+      "set",
+      "help",
+      "need",
+      "enter",
+      "can",
+      "new",
+      "submit"
+    ],
+    "SUBSCRIPTION": [
+      "newslett",
+      "help",
+      "subscript",
+      "compani",
+      "corpor",
+      "cancel",
+      "unsubscrib",
+      "can",
+      "receiv",
+      "need"
+    ]
+  }
+}

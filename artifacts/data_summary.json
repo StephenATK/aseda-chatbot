@@ -1,0 +1,12 @@
+{
+  "rows_raw": 26872,
+  "rows_after_missing": 26872,
+  "rows_after_empty": 26872,
+  "rows_after_pair_dedup": 26872,
+  "rows_final": 24274,
+  "duplicate_pairs_removed": 0,
+  "repeated_questions_removed": 2598,
+  "questions_with_conflicting_intents": 0,
+  "n_intents": 27,
+  "n_categories": 11
+}

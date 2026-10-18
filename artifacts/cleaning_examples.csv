@@ -1,0 +1,26 @@
+intent,raw,track_a_light_clean,track_b_router_text
+newsletter_subscription,I  need assistance to sign up to the newsletter,I need assistance to sign up to the newsletter,need assist sign newslett
+check_invoice,could uhelp me seeing  my invoices from {{Person Name}},could uhelp me seeing my invoices from {{Person Name}},uhelp see invoic slottoken
+registration_problems,can you help  me report problems with a sign-up?,can you help me report problems with a sign-up?,can help report problem sign
+get_refund,I want assistance to demand refunds of my  money,I want assistance to demand refunds of my money,want assist demand refund money
+recover_password,how do I restore my  user profile pass?,how do I restore my user profile pass?,restor user profil pass
+payment_issue,I want assistance informing of  issues with payment,I want assistance informing of issues with payment,want assist inform issu payment
+create_account,"I don't have  a platinum account, can I sign up?","I don't have a platinum account, can I sign up?",not platinum account can sign
+check_invoice,i dont  know what i have to do to see my bill #85632,i dont know what i have to do to see my bill #85632,dont know see bill 85632
+track_refund,I am waiting for a compensation of  {{Currency Symbol}}{{Refund Amount}},I am waiting for a compensation of {{Currency Symbol}}{{Refund Amount}},wait compens slottoken slottoken
+switch_account,switch to  premium account,switch to premium account,switch premium account
+cancel_order,help me cancel purchase {{Order Number}},help me cancel purchase {{Order Number}},help cancel purchas slottoken
+change_order,help me adding several articles to purchase {{Order Number}},help me adding several articles to purchase {{Order Number}},help ad sever articl purchas slottoken
+get_invoice,can I download the bill from {{Person Name}} ?,can I download the bill from {{Person Name}} ?,can download bill slottoken
+get_invoice,I want to download the nivoice from {{Person Name}},I want to download the nivoice from {{Person Name}},want download nivoic slottoken
+change_order,switch a product of order {{Order Number}},switch a product of order {{Order Number}},switch product order slottoken
+track_order,need help to check  the ETA of the order {{Order Number}},need help to check the ETA of the order {{Order Number}},need help check eta order slottoken
+check_invoice,show me invoice{{Invoice Number}},show me invoice{{Invoice Number}},show invoic slottoken
+change_order,i have got to correct purcgase {{Order Number}},i have got to correct purcgase {{Order Number}},got correct purcgas slottoken
+edit_account,editing data on pro acocunt,editing data on pro acocunt,edit data pro acocunt
+track_order,what do I need to do to see order {{Order Number}} status?,what do I need to do to see order {{Order Number}} status?,need see order slottoken statu
+review,I need assistance leaving a review about a product,I need assistance leaving a review about a product,need assist leav review product
+place_order,I'm trying to earn a product,I'm trying to earn a product,m tri earn product
+place_order,help to purchase some products,help to purchase some products,help purchas product
+cancel_order,i bought somegoddamn item how do i cancel order {{Order Number}},i bought somegoddamn item how do i cancel order {{Order Number}},bought somegoddamn item cancel order slottoken
+delivery_period,where could i see when my order is gonna arrive,where could i see when my order is gonna arrive,see order gonna arriv

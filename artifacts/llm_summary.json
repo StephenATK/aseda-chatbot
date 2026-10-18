@@ -1,0 +1,174 @@
+{
+  "n_test": 162,
+  "metrics": [
+    {
+      "key": "bertscore",
+      "label": "BERTScore F1",
+      "higher_is_better": true,
+      "binary": false,
+      "base": 0.24345214664936066,
+      "finetuned": 0.4630953073501587,
+      "reference": null,
+      "diff_ft_minus_base": 0.21964317642117817,
+      "ci95": [
+        0.19593756242064517,
+        0.24443133059216457
+      ],
+      "p_value": 5.591595726191307e-27,
+      "significant": true,
+      "better": "finetuned"
+    },
+    {
+      "key": "rougeL",
+      "label": "ROUGE-L F1",
+      "higher_is_better": true,
+      "binary": false,
+      "base": 0.22489616649414695,
+      "finetuned": 0.39458092842155934,
+      "reference": null,
+      "diff_ft_minus_base": 0.16968476192741233,
+      "ci95": [
+        0.15103178798804015,
+        0.18968093254807425
+      ],
+      "p_value": 5.106605503309948e-27,
+      "significant": true,
+      "better": "finetuned"
+    },
+    {
+      "key": "semantic_sim",
+      "label": "Semantic similarity to reference",
+      "higher_is_better": true,
+      "binary": false,
+      "base": 0.7100114226341248,
+      "finetuned": 0.8259665369987488,
+      "reference": null,
+      "diff_ft_minus_base": 0.11595514481082375,
+      "ci95": [
+        0.09509918368019071,
+        0.13923087317128605
+      ],
+      "p_value": 3.4712459503335483e-19,
+      "significant": true,
+      "better": "finetuned"
+    },
+    {
+      "key": "relevance",
+      "label": "Relevance to question",
+      "higher_is_better": true,
+      "binary": false,
+      "base": 0.6595772504806519,
+      "finetuned": 0.7245478630065918,
+      "reference": 0.6996455192565918,
+      "diff_ft_minus_base": 0.06497061133016775,
+      "ci95": [
+        0.04188315783523851,
+        0.08846167563748213
+      ],
+      "p_value": 7.21942168708854e-08,
+      "significant": true,
+      "better": "finetuned"
+    },
+    {
+      "key": "helpfulness",
+      "label": "Helpfulness (proxy)",
+      "higher_is_better": true,
+      "binary": false,
+      "base": 0.3194444444444444,
+      "finetuned": 0.4972222222222223,
+      "reference": 0.5259259259259259,
+      "diff_ft_minus_base": 0.17777777777777778,
+      "ci95": [
+        0.13055555555555554,
+        0.2305787037037036
+      ],
+      "p_value": 1.189499670565459e-09,
+      "significant": true,
+      "better": "finetuned"
+    },
+    {
+      "key": "log_perplexity",
+      "label": "Fluency (GPT-2 perplexity)",
+      "higher_is_better": false,
+      "binary": false,
+      "base": 2.857322210147057,
+      "finetuned": 2.6283153148345004,
+      "reference": 2.7142123322428007,
+      "diff_ft_minus_base": -0.22900689531255652,
+      "ci95": [
+        -0.2915613504471602,
+        -0.16500942243470093
+      ],
+      "p_value": 2.608277510210309e-10,
+      "significant": true,
+      "better": "finetuned"
+    },
+    {
+      "key": "hallucination",
+      "label": "Hallucination rate",
+      "higher_is_better": false,
+      "binary": true,
+      "base": 0.030864197530864196,
+      "finetuned": 0.0,
+      "reference": 0.0,
+      "diff_ft_minus_base": -0.030864197530864196,
+      "ci95": [
+        -0.06172839506172839,
+        -0.006172839506172839
+      ],
+      "p_value": 0.0625,
+      "significant": false,
+      "better": "finetuned"
+    },
+    {
+      "key": "uses_placeholder",
+      "label": "Uses placeholders",
+      "higher_is_better": true,
+      "binary": true,
+      "base": 0.4012345679012346,
+      "finetuned": 0.41358024691358025,
+      "reference": 0.41975308641975306,
+      "diff_ft_minus_base": 0.012345679012345678,
+      "ci95": [
+        -0.06790123456790123,
+        0.08641975308641975
+      ],
+      "p_value": 0.8776143287523154,
+      "significant": false,
+      "better": "finetuned"
+    }
+  ],
+  "models": {
+    "base": {
+      "label": "Base Llama-3.2-3B-Instruct (zero-shot)"
+    },
+    "finetuned": {
+      "label": "Fine-tuned Llama-3.2-3B-Instruct (QLoRA)"
+    },
+    "reference": {
+      "label": "Reference answers (Bitext, human-written)"
+    }
+  },
+  "reference_perplexity": {
+    "base": 5.057708148399583,
+    "finetuned": 2.050054996282008
+  },
+  "router_accuracy_on_test_sample": 0.9814814814814815,
+  "pct_hit_token_limit": {
+    "base": 0.0,
+    "finetuned": 0.012345679012345678
+  },
+  "hallucination_types": {
+    "base": {
+      "phone": 2,
+      "time_window": 3
+    },
+    "finetuned": {},
+    "reference": {}
+  },
+  "best_model": "finetuned",
+  "significant_wins": {
+    "base": 0,
+    "finetuned": 6
+  }
+}

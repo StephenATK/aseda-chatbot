@@ -1,0 +1,13 @@
+field,rule,rows_matched,pct_rows
+instruction,url,0,0.0
+instruction,email,0,0.0
+instruction,slot_placeholder,6670,24.82
+instruction,elongated_word,17,0.06
+instruction,punctuation_symbol,8418,31.33
+instruction,extra_whitespace,551,2.05
+response,url,5,0.02
+response,email,55,0.2
+response,slot_placeholder,13006,48.4
+response,elongated_word,5,0.02
+response,punctuation_symbol,26872,100.0
+response,extra_whitespace,7024,26.14

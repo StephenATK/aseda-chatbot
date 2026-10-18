@@ -1,0 +1,27 @@
+question,true_intent,predicted
+cance order {{Order Number}},cancel_order,track_order
+i do not know how i could casncel order {{Order Number}},cancel_order,track_order
+problems with cnceling purchase {{Order Number}},cancel_order,change_order
+problem with cancelig order {{Order Number}},cancel_order,change_order
+update purchase00123842,change_order,edit_account
+i nmeed assistance removing some products,change_order,delete_account
+question about changing purchaes {{Order Number}},change_order,cancel_order
+need to eddit order {{Order Number}},change_order,track_order
+I cannot change the addreas,change_shipping_address,change_order
+need help lpocating the bloody invoice from {{Person Name}},check_invoice,get_invoice
+need to chek my bill #85632 how to do it,check_invoice,get_invoice
+I don't know how I can talk to cstomer support,contact_customer_service,contact_human_agent
+I need help contacting customerservice,contact_customer_service,contact_human_agent
+i dont have a {{Account Category}} account eyt i need to sign up,create_account,registration_problems
+"I don't have a platinum account, can I sign up?",create_account,delete_account
+is it possible to crewate a gold account,create_account,switch_account
+"I can't find bill #00108, send it to me",get_invoice,check_invoice
+gedtting bill from {{Person Name}},get_invoice,check_invoice
+can I receive your newesletter?,newsletter_subscription,get_refund
+i have a question about thepayments,payment_issue,delete_account
+i dont know how to inform of paymentissues,payment_issue,registration_problems
+find information about my passreset,recover_password,delete_account
+what do i need to do to inform of an error with a isgnup,registration_problems,payment_issue
+I have troubles submittng the shipping address,set_up_shipping_address,change_shipping_address
+wanna switcj to the pro account i need help,switch_account,delete_account
+I am waitig for a damn reimbursement of {{Refund Amount}} dollars,track_refund,get_refund

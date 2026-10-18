@@ -1,0 +1,50 @@
+{
+  "lsa_explained_variance": 0.4553,
+  "lsa_dims": 128,
+  "minilm_dims": 384,
+  "silhouette_intent_lsa": 0.1584,
+  "silhouette_intent_minilm": 0.2486,
+  "silhouette_category_lsa": 0.1339,
+  "silhouette_category_minilm": 0.2269,
+  "llama_tokens": {
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "question_tokens": {
+      "mean": 10.1,
+      "median": 10.0,
+      "p95": 15.0,
+      "max": 22
+    },
+    "answer_tokens": {
+      "mean": 123.7,
+      "median": 104.0,
+      "p95": 255.0,
+      "max": 466
+    },
+    "prompt_tokens_with_system": {
+      "mean": 128.2,
+      "median": 128.0,
+      "p95": 133.0,
+      "max": 136
+    },
+    "tokens_per_word_answer": 1.191,
+    "pct_answers_over_max_new_tokens": 3.53,
+    "pct_examples_over_max_len": 0.5,
+    "max_len": 512,
+    "max_new_tokens": 300,
+    "slot_tokenisation_example": {
+      "text": "Your order {{Order Number}} has been cancelled.",
+      "tokens": [
+        "Your",
+        "\u0120order",
+        "\u0120{{",
+        "Order",
+        "\u0120Number",
+        "}}",
+        "\u0120has",
+        "\u0120been",
+        "\u0120cancelled",
+        "."
+      ]
+    }
+  }
+}
