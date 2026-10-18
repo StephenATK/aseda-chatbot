@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="5 8 190 172">
+  <defs>
+    <radialGradient id="head" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D9DCE3"/>
+    </radialGradient>
+    <linearGradient id="visor" x1="0" x2="1">
+      <stop offset="0" stop-color="#1D4ED8"/><stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <!-- headset band (open ring) -->
+  <path d="M 30 90 A 70 70 0 1 1 170 90" fill="none" stroke="#F5A623" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 30 90 A 70 70 0 0 0 100 160" fill="none" stroke="#F5A623" stroke-width="6" stroke-linecap="round"/>
+  <!-- ear cups -->
+  <ellipse cx="32" cy="84" rx="15" ry="20" fill="#FF6B4A"/>
+  <ellipse cx="168" cy="84" rx="15" ry="20" fill="#FF6B4A"/>
+  <!-- head -->
+  <circle cx="100" cy="90" r="56" fill="url(#head)"/>
+  <!-- visor + eyes -->
+  <rect x="58" y="60" width="84" height="42" rx="21" fill="url(#visor)"/>
+  <circle cx="80" cy="81" r="9" fill="#9F3A4E"/>
+  <circle cx="120" cy="81" r="9" fill="#9F3A4E"/>
+  <!-- smile -->
+  <path d="M 88 112 Q 100 128 112 112 Z" fill="#E11D63"/>
+  <!-- mic -->
+  <ellipse cx="104" cy="161" rx="11" ry="8" fill="#22C55E"/>
+</svg>

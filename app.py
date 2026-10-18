@@ -21,56 +21,72 @@ import streamlit as st
 
 import textprep  # same cleaning code the notebook used for training
 
-st.set_page_config(page_title="Aseda — Customer Service", page_icon="💬", layout="wide")
-
 ROOT = Path(__file__).parent
 ART = ROOT / "artifacts"
+ROBOT_PNG = ROOT / "assets" / "aseda.png"
+ROBOT_SVG = (ROOT / "assets" / "aseda.svg").read_text() if (ROOT / "assets" / "aseda.svg").exists() else ""
 
-C_BASE, C_FT, C_REF = "#94A3B8", "#0F766E", "#C2410C"
-C_NB, C_SVM = "#B45309", "#1D4ED8"
+st.set_page_config(page_title="Aseda — Customer Service",
+                   page_icon=str(ROBOT_PNG) if ROBOT_PNG.exists() else "🤖", layout="wide")
+
+# Aseda palette: dark navy background, indigo accent
+INDIGO, INDIGO_LT = "#6366F1", "#818CF8"
+C_BASE, C_FT, C_REF = "#94A3B8", INDIGO_LT, "#F5A623"
+C_NB, C_SVM = "#F5A623", INDIGO_LT
 MODEL_COLORS = alt.Scale(domain=["Base", "Fine-tuned", "Reference"], range=[C_BASE, C_FT, C_REF])
 ROUTER_COLORS = alt.Scale(domain=["Naive Bayes", "Linear SVM"], range=[C_NB, C_SVM])
 ROUTER_SHORT = {"nb": "Naive Bayes", "svm": "Linear SVM"}
 YAX = alt.Axis(labelOverlap=False, labelLimit=240)  # show every category label
+AVATAR = str(ROBOT_PNG) if ROBOT_PNG.exists() else "🤖"
 
 # ----------------------------------------------------------------------------
-# Style
+# Style (matches the original Aseda app)
 # ----------------------------------------------------------------------------
 st.markdown(
     """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600&display=swap');
-html, body, [class*="css"], .stMarkdown, p, li { font-family: 'Inter', sans-serif; }
-h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif !important; letter-spacing: -0.01em; color: #0B1F33; }
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+html, body, [class*="css"], .stMarkdown, p, li, input, button, textarea { font-family: 'Plus Jakarta Sans', sans-serif; }
+h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif !important; letter-spacing: -0.02em; color: #F1F3F8; }
 .block-container { padding-top: 2.2rem; max-width: 1250px; }
-.hero { background: linear-gradient(120deg, #0B1F33 0%, #0F4C5C 55%, #0F766E 100%); color: #F8FAFC;
-        border-radius: 18px; padding: 30px 34px; margin-bottom: 18px; }
+.hero { background: linear-gradient(120deg, #141A2E 0%, #1E1B4B 60%, #312E81 100%); color: #F1F3F8;
+        border: 1px solid #262E45; border-radius: 18px; padding: 30px 34px; margin-bottom: 18px; }
 .hero h1 { color: #F8FAFC !important; font-size: 2.15rem; margin: 0 0 6px 0; }
-.hero p { color: #CBD5E1; margin: 0; font-size: 1.02rem; }
-.tag { display: inline-block; background: rgba(255,255,255,.12); color: #E2E8F0; border-radius: 999px;
+.hero p { color: #B4BBCB; margin: 0; font-size: 1.02rem; }
+.tag { display: inline-block; background: rgba(129,140,248,.16); color: #C7D2FE; border-radius: 999px;
        padding: 3px 12px; font-size: .78rem; margin: 0 6px 12px 0; letter-spacing: .02em; }
-.kpi { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px 18px; height: 100%; }
-.kpi .v { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.7rem; font-weight: 800; color: #0B1F33; line-height: 1.1; }
-.kpi .l { color: #64748B; font-size: .82rem; margin-top: 4px; }
+.kpi { background: #131826; border: 1px solid #252C3E; border-radius: 14px; padding: 16px 18px; height: 100%; }
+.kpi .v { font-size: 1.7rem; font-weight: 800; color: #F1F3F8; line-height: 1.1; }
+.kpi .l { color: #9AA3B5; font-size: .82rem; margin-top: 4px; }
 .kpi .d { font-size: .82rem; margin-top: 6px; font-weight: 600; }
-.up { color: #0F766E; } .down { color: #B91C1C; } .flat { color: #64748B; }
+.up { color: #34D399; } .down { color: #F87171; } .flat { color: #9AA3B5; }
 .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0 4px 0; }
-.step { background: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 12px; padding: 10px 14px; font-size: .9rem; }
-.step b { display: block; color: #0B1F33; font-size: .92rem; }
-.step span { color: #64748B; font-size: .78rem; }
-.step.hl { background: #ECFDF5; border-color: #99F6E4; }
-.arrow { color: #94A3B8; font-size: 1.2rem; }
-.card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 16px 18px; margin-bottom: 12px; }
+.step { background: #131826; border: 1px solid #252C3E; border-radius: 12px; padding: 10px 14px; font-size: .9rem; }
+.step b { display: block; color: #F1F3F8; font-size: .92rem; }
+.step span { color: #9AA3B5; font-size: .78rem; }
+.step.hl { background: rgba(99,102,241,.14); border-color: #4F46E5; }
+.arrow { color: #5B6478; font-size: 1.2rem; }
+.card { background: #131826; border: 1px solid #252C3E; border-radius: 14px; padding: 16px 18px; margin-bottom: 12px; }
 .card h4 { margin: 0 0 8px 0; font-size: 1rem; }
-.answer { font-size: .9rem; line-height: 1.55; color: #1E293B; }
+.answer { font-size: .92rem; line-height: 1.6; color: #DDE1EA; }
 .badge { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: .75rem; font-weight: 600; margin-right: 6px; }
-.b-ft { background: #CCFBF1; color: #115E59; } .b-base { background: #E2E8F0; color: #334155; }
-.b-ref { background: #FFEDD5; color: #9A3412; } .b-warn { background: #FEE2E2; color: #991B1B; }
-.b-ok { background: #DCFCE7; color: #166534; } .b-ns { background: #F1F5F9; color: #64748B; }
-.chip { display: inline-block; background: #EEF2FF; color: #3730A3; border-radius: 8px; padding: 2px 8px;
+.b-ft { background: rgba(99,102,241,.22); color: #C7D2FE; } .b-base { background: #232A3B; color: #CBD2DE; }
+.b-ref { background: rgba(245,166,35,.18); color: #FCD38D; } .b-warn { background: rgba(248,113,113,.18); color: #FCA5A5; }
+.b-ok { background: rgba(52,211,153,.16); color: #6EE7B7; } .b-ns { background: #1B2131; color: #9AA3B5; }
+.chip { display: inline-block; background: rgba(99,102,241,.16); color: #C7D2FE; border-radius: 8px; padding: 2px 8px;
         margin: 2px; font-family: ui-monospace, monospace; font-size: .8rem; }
-.note { color: #64748B; font-size: .85rem; }
-mark { background: #FECACA; padding: 0 2px; border-radius: 3px; }
+.note { color: #9AA3B5; font-size: .85rem; }
+mark { background: rgba(248,113,113,.35); color: #FEE2E2; padding: 0 2px; border-radius: 3px; }
+table { color: #DDE1EA; }
+/* welcome screen */
+.welcome { text-align: center; margin-top: 2.5rem; }
+.welcome svg { width: 150px; height: auto; }
+.welcome .title { font-size: 3.6rem; font-weight: 800; letter-spacing: -0.03em; margin: 2.2rem 0 1rem 0; color: #F1F3F8; }
+.welcome .sub { color: #B4BBCB; font-size: 1.15rem; line-height: 1.75; max-width: 720px; margin: 0 auto; }
+.welcome .ask { color: #B4BBCB; font-size: 1.55rem; margin: 2.2rem 0 1.2rem 0; }
+.stButton > button[kind="primary"] { background: #6366F1; border-color: #6366F1; color: #FFFFFF; border-radius: 10px; }
+.stButton > button[kind="primary"]:hover { background: #4F46E5; border-color: #4F46E5; }
+.side-robot svg { width: 46px; height: auto; vertical-align: middle; margin-right: 8px; }
 </style>
 """,
     unsafe_allow_html=True,
@@ -175,11 +191,14 @@ MODEL_NAME = (cfg or {}).get("model_used", "Llama-3.2-3B-Instruct").split("/")[-
 # ----------------------------------------------------------------------------
 # Sidebar
 # ----------------------------------------------------------------------------
-PAGES = ["Overview", "Chat demo", "1 · Data cleaning", "2 · Exploration", "3 · Text representation",
+PAGES = ["Chat with Aseda", "About the project", "1 · Data cleaning", "2 · Exploration", "3 · Text representation",
          "4 · Intent router", "5 · Llama: base vs fine-tuned", "6 · Conclusions"]
 with st.sidebar:
-    st.markdown("### 💬 Aseda")
+    st.markdown(f'<div class="side-robot">{ROBOT_SVG}<b style="font-size:1.35rem;vertical-align:middle">Aseda</b></div>',
+                unsafe_allow_html=True)
     st.caption("Group 13 · Llama-based customer-service chatbot · No RAG")
+    if st.session_state.get("user_name"):
+        st.caption(f"Chatting as **{st.session_state.user_name}**")
     page = st.radio("Go to", PAGES, label_visibility="collapsed")
     st.divider()
     if cfg:
@@ -297,8 +316,38 @@ def router_top3(router, text):
     return [(clf.classes_[i], float(s[i])) for i in order], label
 
 
+def page_welcome():
+    """Opening screen, as in the original Aseda app."""
+    st.markdown(
+        f"""<div class="welcome">{ROBOT_SVG}
+<div class="title">Hi, I'm Aseda</div>
+<p class="sub">I'm a customer-service assistant fine-tuned from Llama 3.2<br>
+— no retrieval, no external documents, just a conversation.</p>
+<p class="ask">What should I call you?</p></div>""",
+        unsafe_allow_html=True,
+    )
+    _, mid, _ = st.columns([1, 2.2, 1])
+    with mid:
+        name = st.text_input("Your name", placeholder="e.g. Ama", label_visibility="collapsed")
+        try:
+            go = st.button("Start chatting", type="primary", width="stretch")
+        except TypeError:  # older Streamlit
+            go = st.button("Start chatting", type="primary", use_container_width=True)
+        if go and not name.strip():
+            st.caption("Please type your name first.")
+        if go and name.strip():
+            st.session_state.user_name = name.strip()
+            st.session_state.chat = [{"role": "assistant", "content":
+                f"Hi {esc(name.strip())}! I'm Aseda. How can I help you today? You can ask about orders, refunds, "
+                "payments, delivery, your account and more."}]
+            st.rerun()
+
+
 def page_chat():
-    st.markdown("## 💬 Chat with Aseda")
+    if not st.session_state.get("user_name"):
+        page_welcome()
+        return
+    st.markdown("## Chat with Aseda")
     st.markdown(
         '<p class="note">The <b>intent router runs live</b> on whatever you type. The Llama answers are '
         "<b>real answers the models gave to held-out test questions</b> in Colab. Llama is too large to run on free Streamlit "
@@ -312,12 +361,14 @@ def page_chat():
 
     c1, c2 = st.columns([3, 2])
     which = c1.radio("Answer from", ["Fine-tuned", "Base"], horizontal=True)
-    if c2.button("Clear chat"):
-        st.session_state.chat = []
+    if c2.button("Start over"):
+        for k in ("chat", "user_name"):
+            st.session_state.pop(k, None)
+        st.rerun()
     st.session_state.setdefault("chat", [])
     st.session_state.setdefault("suggest", gens.sample(4, random_state=7).question.tolist())
 
-    if not st.session_state.chat:
+    if len(st.session_state.chat) <= 1:
         st.caption("Try one of these test questions, or type your own:")
         cols = st.columns(4)
         for i, q in enumerate(st.session_state.suggest):
@@ -326,7 +377,7 @@ def page_chat():
                 st.rerun()
 
     for m in st.session_state.chat:
-        with st.chat_message(m["role"], avatar="🧑" if m["role"] == "user" else "💬"):
+        with st.chat_message(m["role"], avatar="🧑" if m["role"] == "user" else AVATAR):
             st.markdown(m["content"], unsafe_allow_html=True)
 
     text = st.chat_input("Describe your issue, e.g. 'I want to cancel my order'")
@@ -346,7 +397,7 @@ def page_chat():
     col = "finetuned_answer" if which == "Fine-tuned" else "base_answer"
     badge = "b-ft" if which == "Fine-tuned" else "b-base"
 
-    if sim >= 0.5:
+    if sim >= 0.35:
         match = f'<span class="badge b-ok">close match · similarity {sim:.2f}</span>'
     else:
         match = (f'<span class="badge b-warn">no close recorded question · similarity {sim:.2f}</span>'
@@ -396,7 +447,7 @@ so the right behaviour is to write the placeholder rather than invent a value.
         st.markdown("#### How often each regular-expression rule fires on the raw text")
         ch = alt.Chart(hits).mark_bar(cornerRadiusEnd=4).encode(
             y=alt.Y("rule:N", sort="-x", title=None, axis=YAX), x=alt.X("pct_rows:Q", title="% of rows matched"),
-            color=alt.Color("field:N", scale=alt.Scale(range=["#0F766E", "#94A3B8"]), title="field"),
+            color=alt.Color("field:N", scale=alt.Scale(range=[C_FT, C_BASE]), title="field"),
             yOffset="field:N", tooltip=["field", "rule", "rows_matched", "pct_rows"]).properties(height=300)
         show_chart(ch)
     ex = load_csv("cleaning_examples.csv")
@@ -429,7 +480,7 @@ def page_eda():
         fl = pd.DataFrame(eda["flag_counts"])
         if len(fl):
             fl["label"] = fl.flag + " · " + fl.meaning
-            show_chart(alt.Chart(fl).mark_bar(cornerRadiusEnd=4, color="#6366F1").encode(
+            show_chart(alt.Chart(fl).mark_bar(cornerRadiusEnd=4, color=C_REF).encode(
                 y=alt.Y("label:N", sort="-x", title=None, axis=YAX), x=alt.X("count:Q", title="questions with this tag"),
                 tooltip=["flag", "meaning", "count"]).properties(height=360, title="Bitext language-variation tags"))
             st.caption("Bitext tags each question with the variation it contains (letter meanings from the dataset card). "
@@ -579,7 +630,7 @@ def page_router():
         if len(d):
             show_chart(alt.Chart(d).mark_rect().encode(
                 x=alt.X("pred:N", title="predicted"), y=alt.Y("true:N", title="true"),
-                color=alt.Color("count:Q", scale=alt.Scale(scheme="teals")), tooltip=["true", "pred", "count", alt.Tooltip("rate:Q", format=".1%")])
+                color=alt.Color("count:Q", scale=alt.Scale(scheme="purples")), tooltip=["true", "pred", "count", alt.Tooltip("rate:Q", format=".1%")])
                 .properties(height=560))
         else:
             st.success("No misclassifications on the test set.")
@@ -795,7 +846,7 @@ def page_conclusions():
     )
 
 
-ROUTES = {"Overview": page_overview, "Chat demo": page_chat, "1 · Data cleaning": page_data, "2 · Exploration": page_eda,
+ROUTES = {"Chat with Aseda": page_chat, "About the project": page_overview, "1 · Data cleaning": page_data, "2 · Exploration": page_eda,
           "3 · Text representation": page_repr, "4 · Intent router": page_router,
           "5 · Llama: base vs fine-tuned": page_llm, "6 · Conclusions": page_conclusions}
 ROUTES[page]()
